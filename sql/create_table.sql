@@ -1,3 +1,3 @@
-CREATE TABLE Commuters (
+CREATE TABLE C02 (
 	RFID int
 );
