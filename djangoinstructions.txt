@@ -11,3 +11,6 @@ start webserver:
 python3 manage.py runserver
 
 In vscode, you can ctrl+click the link to open the webpage.
+
+To exit venv, just run the following command:
+deactivate
