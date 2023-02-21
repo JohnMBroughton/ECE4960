@@ -1,0 +1,13 @@
+Open this directory in WSL
+cd into django-pyp directory
+
+run the following command:
+source .venv/bin/activate
+
+verify django is installed:
+python3 pip install django
+
+start webserver:
+python3 manage.py runserver
+
+In vscode, you can ctrl+click the link to open the webpage.
