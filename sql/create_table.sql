@@ -1,0 +1,3 @@
+CREATE TABLE C02 (
+	RFID int
+);
