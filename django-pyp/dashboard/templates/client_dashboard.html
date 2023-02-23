@@ -7,15 +7,17 @@
     <title>Clemson Pick Your Park</title>
     {% load bootstrap5 %}
 
+    {% load static %}
+
     {% bootstrap_css %}
 
     {% bootstrap_javascript %}
 
     {% bootstrap_messages %}
-    <link rel="stylesheet" href="{{ STATIC_URL }}/assets/bootstrap/css/bootstrap.min.css">
+    <link rel="stylesheet" href="{% static '/assets/bootstrap/css/bootstrap.min.css' %s}">
     <link rel="stylesheet" href="https://fonts.googleapis.com/css?family=Nunito:200,200i,300,300i,400,400i,600,600i,700,700i,800,800i,900,900i&amp;display=swap">
-    <link rel="stylesheet" href="{{ STATIC_URL }}/assets/fonts/fontawesome-all.min.css">
-    <link rel="stylesheet" href="{{ STATIC_URL }}/assets/css/Navbar-With-Button-icons.css">
+    <link rel="stylesheet" href="{% static '/assets/fonts/fontawesome-all.min.css' %}">
+    <link rel="stylesheet" href="{% static '/assets/css/Navbar-With-Button-icons.css' %}">
 </head>
 
 <body id="page-top">
@@ -108,7 +110,7 @@
                             </li>
                             <div class="d-none d-sm-block topbar-divider"></div>
                             <li class="nav-item dropdown no-arrow">
-                                <div class="nav-item dropdown no-arrow"><a class="dropdown-toggle nav-link" aria-expanded="false" data-bs-toggle="dropdown" href="#"><span class="d-none d-lg-inline me-2 text-gray-600 small">Admin</span><img class="border rounded-circle img-profile" src="{{ STATIC_URL }}/assets/img/sds-design-clemson-tiger-paw-print-dizzler-xl-255968_6c088676-27ee-4253-aba2-e07636656ab2_1000x.webp"></a>
+                                <div class="nav-item dropdown no-arrow"><a class="dropdown-toggle nav-link" aria-expanded="false" data-bs-toggle="dropdown" href="#"><span class="d-none d-lg-inline me-2 text-gray-600 small">Admin</span><img class="border rounded-circle img-profile" src="{% static '/assets/img/sds-design-clemson-tiger-paw-print-dizzler-xl-255968_6c088676-27ee-4253-aba2-e07636656ab2_1000x.webp' %}"></a>
                                     <div class="dropdown-menu shadow dropdown-menu-end animated--grow-in"><a class="dropdown-item" href="#"><i class="fas fa-user fa-sm fa-fw me-2 text-gray-400"></i>&nbsp;Profile</a><a class="dropdown-item" href="#"><i class="fas fa-cogs fa-sm fa-fw me-2 text-gray-400"></i>&nbsp;Settings</a><a class="dropdown-item" href="#"><i class="fas fa-list fa-sm fa-fw me-2 text-gray-400"></i>&nbsp;Activity log</a>
                                         <div class="dropdown-divider"></div><a class="dropdown-item" href="#"><i class="fas fa-sign-out-alt fa-sm fa-fw me-2 text-gray-400"></i>&nbsp;Logout</a>
                                     </div>
@@ -142,8 +144,8 @@
         </div><a class="border rounded d-inline scroll-to-top" href="#page-top"><i class="fas fa-angle-up"></i></a>
     </div>
     <footer class="bg-white sticky-footer"></footer>
-    <script src="{{ STATIC_URL }}/assets/bootstrap/js/bootstrap.min.js"></script>
-    <script src="{{ STATIC_URL }}/assets/js/theme.js"></script>
+    <script src="{% static '/assets/bootstrap/js/bootstrap.min.js' %}"></script>
+    <script src="{% static '/assets/js/theme.js' %}"></script>
     {% endblock content %}
 </body>
 
