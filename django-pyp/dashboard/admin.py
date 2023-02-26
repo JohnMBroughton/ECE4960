@@ -5,11 +5,11 @@ from dashboard.models import LotSize
 
 # Admin site
 # Databases
-class C02Admin(admin.ModelAdmin):
+class RFIDAdmin(admin.ModelAdmin):
     list_display = ('Lot','RFID')
     list_filter = ('Lot',)
-admin.site.register(RFID, C02Admin)
+admin.site.register(RFID, RFIDAdmin)
 
 class LotSizesAdmin(admin.ModelAdmin):
-    list_display=('name','num_spaces')
+    list_display=('name','num_spaces','percentage_full')
 admin.site.register(LotSize,LotSizesAdmin)
