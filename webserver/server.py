@@ -44,9 +44,9 @@ with socket.socket(socket.AF_INET, socket.SOCK_STREAM) as s:
             data = conn.recv(1024)
             if not data:
                 break
-            print(struct.unpack('int',data))
-            data[1] = IoO; 
-            data[2] = CUID
+            print(struct.unpack('?i',data))
+            IoO = data[0]
+            CUID = data[1]
             updateDatabase(IoO, CUID)
             conn.sendall(data)
 
