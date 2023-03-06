@@ -9,11 +9,17 @@ PORT = 5005  # The port used by the server
 IoO = 1
 CUID = 12345678
 
-packet = struct.pack('?i', IoO, CUID)
+count = 0
 
-with socket.socket(socket.AF_INET, socket.SOCK_STREAM) as s:
-    s.connect((HOST, PORT))
-    s.sendall(packet)
-    data = s.recv(1024)
+#packet = struct.pack('?i', IoO, CUID)
 
-print(f"Received {data!r}")
+while True:
+    with socket.socket(socket.AF_INET, socket.SOCK_STREAM) as s:
+        s.connect((HOST, PORT))
+        while True:
+            input("Press enter to continue:") #Replaces interrupt
+            packet = struct.pack('?ii', IoO, CUID, count)
+            s.sendall(packet)
+            count += 1
+
+

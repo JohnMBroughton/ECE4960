@@ -41,14 +41,17 @@ with socket.socket(socket.AF_INET, socket.SOCK_STREAM) as s:
     with conn:
         print(f"Connected by {addr}")
         while True:
-            data = conn.recv(1024)
+            data = conn.recv(12)
             if not data:
                 break
-            print(struct.unpack('?i',data))
-            IoO = data[0]
-            CUID = data[1]
-            updateDatabase(IoO, CUID)
-            conn.sendall(data)
+            else:
+                print(struct.unpack('?ii',data))
+                IoO = data[0]
+                CUID = data[1]
+                count = data[2]
+                updateDatabase(IoO, CUID)
+
+#conn.sendall(data)
 
 
 
