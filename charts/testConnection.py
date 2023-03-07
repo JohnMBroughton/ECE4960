@@ -29,6 +29,17 @@ def select_all_tasks(conn):
     for row in rows:
         print(row)
 
+def insert_RFID(conn):
+    cur = conn.cursor()
+    cur.execute("INSERT INTO chartjs_rfid (Lot,RFID) VALUES ('CO2',99999999)")
+
+def delete_RFID(conn):
+    cur = conn.cursor()
+    cur.execute("DELETE FROM chartjs_rfid WHERE RFID=99999999")
 
 conn = create_connection("db.sqlite3")
+select_all_tasks(conn)
+insert_RFID(conn)
+select_all_tasks(conn)
+delete_RFID(conn)
 select_all_tasks(conn)
