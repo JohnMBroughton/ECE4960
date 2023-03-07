@@ -2,35 +2,30 @@
 
 import socket
 import struct
-import sqlite3
 
 #fucntons to update database
-def updateDatabase(InorOut, ID, databaseConnection):
+def updateDatabase(InorOut, ID):
         if(InorOut == 0):
-            remove_car(ID, databaseConnection)
+            remove_car(ID)
         elif(InorOut == 1):
-            add_car(ID, databaseConnection)
+            add_car(ID)
         else:
-             print(InorOut + ": not a valid entrance or exit value")
+             print(InorOut + ": not a valid entrance or exit int")
 
-def remove_car(ID, databaseConnection):
+def remove_car(ID):
         if(ID == 11111111):
             print("CUID not unpacked")
         else:
             print("sql call to remove car")
-            databaseConnection.execute("DELETE FROM table_name WHERE CUID =(?)", ID)
-            
+        #sql call to remove correspodign ID from the database
 
-def add_car(ID, databaseConnection):
+
+def add_car(ID):
         if(ID == 11111111):
             print("CUID not unpacked")
         else:
             print("sql call to add car")
-            databaseConnection.execute("INSERT into table_name (column1, column2) V")
-        
-
-DB_conn = sqlite3.connect('databaseName.db') #Connect to the database
-
+        #sql call to remove corresponding ID from Database
 
 IoO = 2
 CUID = 11111111
@@ -54,7 +49,7 @@ with socket.socket(socket.AF_INET, socket.SOCK_STREAM) as s:
                 IoO = data[0]
                 CUID = data[1]
                 count = data[2]
-                updateDatabase(IoO, CUID, DB_conn)
+                updateDatabase(IoO, CUID)
 
 #conn.sendall(data)
 
