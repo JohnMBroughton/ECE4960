@@ -3,6 +3,33 @@
 import socket
 import struct
 
+#fucntons to update database
+def updateDatabase(InorOut, ID):
+        if(InorOut == 0):
+            remove_car(ID)
+        elif(InorOut == 1):
+            add_car(ID)
+        else:
+             print(InorOut + ": not a valid entrance or exit int")
+
+def remove_car(ID):
+        if(ID == 11111111):
+            print("CUID not unpacked")
+        else:
+            print("sql call to remove car")
+        #sql call to remove correspodign ID from the database
+
+
+def add_car(ID):
+        if(ID == 11111111):
+            print("CUID not unpacked")
+        else:
+            print("sql call to add car")
+        #sql call to remove corresponding ID from Database
+
+IoO = 2
+CUID = 11111111
+
 HOST = "169.254.185.103"  # This is the IP of the admin PC. This needs to be set statically
 PORT = 5005  # Port to listen on (non-privileged ports are > 1023)
 
@@ -14,8 +41,18 @@ with socket.socket(socket.AF_INET, socket.SOCK_STREAM) as s:
     with conn:
         print(f"Connected by {addr}")
         while True:
-            data = conn.recv(1024)
+            data = conn.recv(12)
             if not data:
                 break
-            print(struct.unpack('hh',data))
-            conn.sendall(data)
+            else:
+                print(struct.unpack('?ii',data))
+                IoO = data[0]
+                CUID = data[1]
+                count = data[2]
+                updateDatabase(IoO, CUID)
+
+#conn.sendall(data)
+
+
+
+
