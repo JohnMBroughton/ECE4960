@@ -1,4 +1,11 @@
-# echo-server.py
+# server.py
+# ECE 4960 - Clemson University - Team 14
+#
+# This program accepts client connections via socket, and adds the data it
+# receives to the Django SQLite database. It is based on the following file
+# https://github.com/realpython/materials/blob/master/python-sockets-tutorial/echo-server.py
+
+
 
 import socket
 import struct
@@ -45,10 +52,9 @@ with socket.socket(socket.AF_INET, socket.SOCK_STREAM) as s:
             if not data:
                 break
             else:
-                print(struct.unpack('?ii',data))
+                print(struct.unpack('?8s',data))
                 IoO = data[0]
                 CUID = data[1]
-                count = data[2]
                 updateDatabase(IoO, CUID)
 
 #conn.sendall(data)
