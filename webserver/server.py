@@ -9,9 +9,10 @@
 
 import socket
 import struct
+import sqlite3
 
 #fucntons to update database
-def updateDatabase(InorOut, ID):
+def updateDatabase(InorOut, ID, DBConn):
         if(InorOut == 0):
             remove_car(ID)
         elif(InorOut == 1):
@@ -32,8 +33,9 @@ def add_car(ID):
             print("CUID not unpacked")
         else:
             print("sql call to add car")
-        #sql call to remove corresponding ID from Database
+        #sql call to add corresponding ID from Database
 
+db_conn = sqlite3.connect("db.sq")
 IoO = 2
 CUID = 11111111
 
