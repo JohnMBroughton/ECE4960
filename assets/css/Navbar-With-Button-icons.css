@@ -55,3 +55,10 @@
   border-radius: 50%;
 }
 
+.progress {
+}
+
+.progress {
+  --bs-progress-bar-bg: #522D80;
+}
+
