@@ -1,7 +1,43 @@
-# echo-server.py
+# server.py
+# ECE 4960 - Clemson University - Team 14
+#
+# This program accepts client connections via socket, and adds the data it
+# receives to the Django SQLite database. It is based on the following file
+# https://github.com/realpython/materials/blob/master/python-sockets-tutorial/echo-server.py
+
+
 
 import socket
 import struct
+import sqlite3
+
+#fucntons to update database
+def updateDatabase(InorOut, ID, DBConn):
+        if(InorOut == 0):
+            remove_car(ID)
+        elif(InorOut == 1):
+            add_car(ID)
+        else:
+             print(InorOut + ": not a valid entrance or exit int")
+
+def remove_car(ID):
+        if(ID == 11111111):
+            print("CUID not unpacked")
+        else:
+            print("sql call to remove car")
+        #sql call to remove correspodign ID from the database
+
+
+def add_car(ID):
+        if(ID == 11111111):
+            print("CUID not unpacked")
+        else:
+            print("sql call to add car")
+        #sql call to add corresponding ID from Database
+
+db_conn = sqlite3.connect("db.sq")
+IoO = 2
+CUID = 11111111
 
 HOST = "169.254.185.103"  # This is the IP of the admin PC. This needs to be set statically
 PORT = 5005  # Port to listen on (non-privileged ports are > 1023)
@@ -14,8 +50,17 @@ with socket.socket(socket.AF_INET, socket.SOCK_STREAM) as s:
     with conn:
         print(f"Connected by {addr}")
         while True:
-            data = conn.recv(1024)
+            data = conn.recv(12)
             if not data:
                 break
-            print(struct.unpack('hh',data))
-            conn.sendall(data)
+            else:
+                print(struct.unpack('?8s',data))
+                IoO = data[0]
+                CUID = data[1]
+                updateDatabase(IoO, CUID)
+
+#conn.sendall(data)
+
+
+
+
